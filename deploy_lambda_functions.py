@@ -24,4 +24,4 @@ if __name__ == "__main__":
     # functions = get_lambda_functions_on_aws()
     # print(functions)
     os.system('aws s3 ls')
-    os.system('aws lambda list-functions')
+    os.system('aws lambda list-functions --region us-west-2')
