@@ -21,5 +21,7 @@ def get_lambda_functions_on_aws():
 
 if __name__ == "__main__":
     # main()
-    functions = get_lambda_functions_on_aws()
-    print(functions)
+    # functions = get_lambda_functions_on_aws()
+    # print(functions)
+    os.system('aws s3 ls')
+    os.system('aws lambda list-functions')
