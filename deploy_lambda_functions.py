@@ -4,7 +4,7 @@ import subprocess
 
 
 def get_lambda_functions_on_aws():
-    p = subprocess.Popen('aws lambda list-functions', 
+    p = subprocess.Popen('aws lambda list-functions --region us-west-2', 
         shell=True, 
         stdout=subprocess.PIPE, 
         stderr=subprocess.STDOUT)
@@ -21,7 +21,5 @@ def get_lambda_functions_on_aws():
 
 if __name__ == "__main__":
     # main()
-    # functions = get_lambda_functions_on_aws()
-    # print(functions)
-    os.system('aws s3 ls')
-    os.system('aws lambda list-functions --region us-west-2')
+    functions = get_lambda_functions_on_aws()
+    print(functions)
