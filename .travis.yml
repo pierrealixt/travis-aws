@@ -1,0 +1,41 @@
+os: linux
+language: python # This lets us use newer python versions from virtualenv
+sudo: required
+cache:
+  apt: true
+  pip: true
+  directories:
+    # commented out - we want to get fresh overpass file each time
+    #- /tmp # cache any previously downloaded .osm files
+  timeout: 1000
+compiler: clang
+
+python:
+  - '3.6'
+
+services:
+  - docker
+
+env:
+  global:
+    - ON_TRAVIS=true
+
+matrix:
+  fast_finish: true
+  include:
+    - python: '3.6'
+      env: TRAVIS_CONFIG=PYTHON3
+
+  exclude:
+    - python: '3.6'
+
+git:
+  depth: 30
+
+before_install:
+
+install:
+  - pip install awscli
+
+script:
+  - python deploy_lambda_functions.py
